@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+   <EditText
+       android:layout_width="300dp"
+       android:layout_height="50dp"
+       android:id="@+id/IDinput"
+       android:layout_centerHorizontal="true"
+       android:hint="ID"
+       android:layout_marginTop="151dp"
+       tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:id="@+id/PWinput"
+        android:layout_centerHorizontal="true"
+        android:hint="PW"
+        android:layout_below="@+id/IDinput"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="55dp"
+        android:text="Log in"
+        android:id="@+id/login"
+        android:textAllCaps="false"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/PWinput"
+        android:layout_toStartOf="@+id/signup"
+        android:layout_toLeftOf="@+id/signup" />
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="55dp"
+        android:text="Sign up"
+        android:id="@+id/signup"
+        android:textAllCaps="false"
+        android:layout_alignTop="@+id/login"
+        android:layout_alignEnd="@+id/PWinput"
+        android:layout_alignRight="@+id/PWinput" />
+
+
+</RelativeLayout>
