@@ -24,7 +24,7 @@ public class host_or_guest extends AppCompatActivity {
         btn_guest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder ad =new AlertDialog.Builder(host_or_guest.this);
+               /* AlertDialog.Builder ad =new AlertDialog.Builder(host_or_guest.this);
                 ad.setMessage("사용하실 닉네임을 입력해주세요");
 
                 final EditText et = new EditText(host_or_guest.this);
@@ -46,13 +46,15 @@ public class host_or_guest extends AppCompatActivity {
                         dialog.dismiss();;
                     }
                 });
-                ad.show();
+                ad.show();*/
+                Intent intent = new Intent(host_or_guest.this, Guest_page_main.class);
+                startActivity(intent);
             }
         });
         btn_host.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder ad2 = new AlertDialog.Builder(host_or_guest.this);
+               /* AlertDialog.Builder ad2 = new AlertDialog.Builder(host_or_guest.this);
                 ad2.setMessage("사용하실 닉네임을 입력해주세요");
 
                 final EditText et2=new EditText(host_or_guest.this);
@@ -74,7 +76,9 @@ public class host_or_guest extends AppCompatActivity {
                         dialog.dismiss();
                     }
                 });
-                ad2.show();
+                ad2.show();*/
+                Intent intent = new Intent(host_or_guest.this, Host_page_main.class);
+                startActivity(intent);
             }
         });
     }

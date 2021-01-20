@@ -24,7 +24,7 @@ import org.json.JSONObject;
 public class Host_page_main extends AppCompatActivity {
 private Button btn_reg_hotel,btn_chatting;
 private TextView tv_Host;
-private String UserID;
+//private String UserID;
 private EditText et_name,et_address,et_PHnum,et_Capacity,et_checkin,et_checkout,et_price;
 static String hotelName;
 static String hotelAddress ;
@@ -34,6 +34,7 @@ static String hotelCheckIn ;
 static String hotelCheckOut;
 static String hotelPrice ;
 static String hotelUserID;
+private String userID=MainActivity.userID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,8 +43,9 @@ static String hotelUserID;
         btn_reg_hotel=(Button)findViewById(R.id.reg_hotel);
         btn_chatting=(Button)findViewById(R.id.chatting);
         //tv_Host=(TextView)findViewById(R.id.Host);
-        Intent intent = getIntent();
-        UserID= intent.getStringExtra("username2");
+       // Intent intent = getIntent();
+        //UserID= intent.getStringExtra("username2");
+
         //tv_Host.setText(Host);
 
 
@@ -51,7 +53,7 @@ static String hotelUserID;
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(Host_page_main.this,Host_page_chatting.class);
-                intent.putExtra("username2",UserID);
+                //intent.putExtra("username2",UserID);
                 startActivity(intent);
             }
         });
@@ -61,7 +63,7 @@ static String hotelUserID;
 
                 final LinearLayout linear =(LinearLayout) View.inflate(Host_page_main.this,R.layout.activity_host_dialog,null);
                 AlertDialog.Builder ad=new AlertDialog.Builder(Host_page_main.this);
-                ad.setMessage(UserID+" 님의 숙박정보 등록");
+                ad.setMessage(userID+" 님의 숙박정보 등록");
                 ad.setView(linear);
 
                 ad.setPositiveButton("확인", new DialogInterface.OnClickListener() {
@@ -81,7 +83,7 @@ static String hotelUserID;
                         hotelCheckIn = et_checkin.getText().toString();
                         hotelCheckOut = et_checkout.getText().toString();
                         hotelPrice = et_price.getText().toString();
-                        hotelUserID=UserID;
+                        hotelUserID=userID;
 
 
                         Response.Listener<String> responseListener = new Response.Listener<String>() {
