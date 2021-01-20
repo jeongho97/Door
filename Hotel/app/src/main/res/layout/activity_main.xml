@@ -45,5 +45,14 @@
         android:layout_alignEnd="@+id/PWinput"
         android:layout_alignRight="@+id/PWinput" />
 
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="55dp"
+        android:text="DEVELOPER.Ver"
+        android:id="@+id/developer"
+        android:textAllCaps="false"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/login" />
+
 
 </RelativeLayout>
