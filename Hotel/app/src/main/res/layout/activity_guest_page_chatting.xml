@@ -1,32 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Guest_page_chatting">
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"/>
-    <EditText
-        android:id="@+id/message"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Enter message"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/chatbutton"
-        android:text="chat"/>
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/chatView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="30dp"
-        />
+        android:layout_below="@+id/textView"
+        android:scrollbarFadeDuration="0"
+        android:scrollbarSize="5dp"
+        android:scrollbarThumbVertical="@android:color/darker_gray"
+        android:scrollbars="vertical"
+        android:layout_weight="1"
+        android:gravity="bottom|right" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/block"
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/chatView"
+            android:layout_toStartOf="@+id/message"
+            android:layout_toLeftOf="@+id/message"
+            android:background="#00ff0000"/>
+
+        <EditText
+            android:id="@+id/message"
+            android:layout_width="250dp"
+            android:layout_height="match_parent"
+            android:layout_toStartOf="@+id/chatbutton"
+            android:layout_toLeftOf="@+id/chatbutton"
+
+            />
+
+        <Button
+            android:id="@+id/chatbutton"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:text="전송"
+            android:layout_toStartOf="@+id/block2"
+            android:layout_toLeftOf="@+id/block2"
+
+            />
+
+        <Button
+            android:id="@+id/block2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#00ff0000"/>
+
+    </LinearLayout>
 </LinearLayout>

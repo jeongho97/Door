@@ -14,7 +14,9 @@
         android:usesCleartextTraffic="true">
         <activity android:name=".Guest_page_main"></activity>
         <activity android:name=".Host_page_main" />
-        <activity android:name=".Guest_page_chatting" />
+        <activity android:name=".Guest_page_chatting"
+            />
+
         <activity android:name=".Host_page_chatting" />
         <activity android:name=".Sign_up" />
         <activity android:name=".host_or_guest" />

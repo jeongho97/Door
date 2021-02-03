@@ -1,8 +1,13 @@
 package com.example.hotel;
 
+import android.app.AlertDialog;
+import android.content.Intent;
+import android.graphics.Color;
+import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,6 +19,10 @@ import java.util.ArrayList;
 public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.CustomViewHolder> {
 
     private ArrayList<HotelData> arrayList;
+    static public String curName;
+    static public String curUserID;
+    private SparseBooleanArray mSelectedItems = new SparseBooleanArray(0);
+    private int num=0;
 
     public HotelAdapter(ArrayList<HotelData> arrayList) {
         this.arrayList = arrayList;
@@ -29,21 +38,41 @@ public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.CustomViewHo
 
     @Override
     public void onBindViewHolder(@NonNull HotelAdapter.CustomViewHolder holder, int position) {
-        holder.hotelName.setText(arrayList.get(position).getHotelName());
-        holder.hotelAddress.setText(arrayList.get(position).getHotelAddress());
-        holder.hotelNumber.setText(arrayList.get(position).getHotelNumber());
-        holder.hotelCapacity.setText(arrayList.get(position).getHotelCapacity());
-        holder.hotelCheckIn.setText(arrayList.get(position).getHotelCheckIn());
-        holder.hotelCheckOut.setText(arrayList.get(position).getHotelCheckOut());
-        holder.hotelPrice.setText(arrayList.get(position).getHotelPrice());
-        holder.hotelUserID.setText(arrayList.get(position).getHotelUserID());
+        holder.hotelName.setText("호텔이름: "+arrayList.get(position).getHotelName());
+        holder.hotelAddress.setText("호텔주소: "+arrayList.get(position).getHotelAddress());
+        holder.hotelNumber.setText("호텔번호: "+arrayList.get(position).getHotelNumber());
+        holder.hotelCapacity.setText("인원: "+arrayList.get(position).getHotelCapacity());
+        holder.hotelCheckIn.setText("체크인: "+arrayList.get(position).getHotelCheckIn());
+        holder.hotelCheckOut.setText("체크아웃: "+arrayList.get(position).getHotelCheckOut());
+        holder.hotelPrice.setText("가격: "+arrayList.get(position).getHotelPrice());
+        holder.hotelUserID.setText("작성자: "+arrayList.get(position).getHotelUserID());
+
+
 
         holder.itemView.setTag(position);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String curName=holder.hotelName.getText().toString();
-                Toast.makeText(v.getContext(),curName,Toast.LENGTH_SHORT).show();
+                curName=arrayList.get(position).getHotelName();
+                curUserID=arrayList.get(position).getHotelUserID();
+
+
+                if ( mSelectedItems.get(position, false) ){
+                    mSelectedItems.put(position, false);
+                    v.setBackgroundColor(Color.WHITE);
+                    num--;
+                }
+                else {
+                    if(num==0) {
+                        mSelectedItems.put(position, true);
+                        v.setBackgroundColor(Color.LTGRAY);
+                        num++;
+                    }
+                    else
+                    {
+                        Toast.makeText(v.getContext(),"하나만 선택할 수 있습니다",Toast.LENGTH_SHORT).show();
+                    }
+                }
             }
         });
 
@@ -51,7 +80,6 @@ public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.CustomViewHo
             @Override
             public boolean onLongClick(View v) {
                 remove(holder.getAdapterPosition());
-
 
                 return true;
             }

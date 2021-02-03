@@ -1,7 +1,13 @@
 package com.example.hotel;
 
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -35,6 +41,8 @@ public class Guest_page_main extends AppCompatActivity {
     private String userID=MainActivity.userID;
     private String userPW=MainActivity.userPW;
 
+    private Button btn_chat;
+
 
 
     int num;
@@ -51,8 +59,6 @@ public class Guest_page_main extends AppCompatActivity {
         arrayList = new ArrayList<>();//HotelData를 담을 어레이 리스트 (어댑터쪽으로)
         hotelAdapter = new HotelAdapter(arrayList);
         recyclerView.setAdapter(hotelAdapter);
-
-
 
 
        Response.Listener<String> responseListener = new Response.Listener<String>() {
@@ -81,9 +87,8 @@ public class Guest_page_main extends AppCompatActivity {
                         HotelPrice[i] = jsonObject.getString("hotelPrice"+i);
                         HotelUserID[i] = jsonObject.getString("hotelUserID"+i);
                         System.out.println(HotelName);
-                        HotelData hotelData = new HotelData("호텔이름: "+HotelName[i],"호텔주소: "+HotelAddress[i],"호텔번호: "+HotelNumber[i],
-                                "인원: "+HotelCapacity[i], "체크인: "+HotelCheckIn[i],"체크아웃: "+HotelCheckOut[i],
-                                "가격: "+HotelPrice[i],"작성자: "+HotelUserID[i]);
+                        HotelData hotelData = new HotelData(HotelName[i],HotelAddress[i],HotelNumber[i], HotelCapacity[i], HotelCheckIn[i]
+                                ,HotelCheckOut[i], HotelPrice[i],HotelUserID[i]);
                         arrayList.add(hotelData);
                         hotelAdapter.notifyDataSetChanged();
 
@@ -104,6 +109,15 @@ public class Guest_page_main extends AppCompatActivity {
         take_room_Info Take_room_Info = new take_room_Info(userID,userPW, responseListener);
         RequestQueue queue = Volley.newRequestQueue(Guest_page_main.this);
         queue.add(Take_room_Info); // Volley를 이용해서 서버로 요청함
+        btn_chat=(Button)findViewById(R.id.chat);
+
+        btn_chat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Guest_page_main.this, Guest_page_chatting.class);
+                startActivity(intent);
+            }
+        });
 
     }
 }
