@@ -25,8 +25,8 @@ public class Guest_page_chatting extends AppCompatActivity {
     private Handler mHandler;
     Socket socket;
     PrintWriter sendWriter;
-    private String ip = "165.229.187.90";
-    private int port = 9999;
+    private String ip = "180.189.90.25";
+    private int port = 8888;
 
     TextView textView;
     TextView textView2;
@@ -73,7 +73,7 @@ public class Guest_page_chatting extends AppCompatActivity {
                     InetAddress serverAddr = InetAddress.getByName(ip);//소켓생성
                     socket = new Socket(serverAddr, port);
                     sendWriter = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream(),"UTF-8")), true);
-                    chatView.setText("[##] 서버와 연결이 되었습니다......");
+                    chatView.setText("[##] 서버와 연결이 되었습니다......\r\n");
                     //sendWriter = new PrintWriter(socket.getOutputStream()); //데이터 전송
                     BufferedReader input = new BufferedReader(new InputStreamReader(socket.getInputStream(),"UTF-8"));//데이터 수신
                     while(true){
@@ -97,7 +97,7 @@ public class Guest_page_chatting extends AppCompatActivity {
                     public void run() {
                         super.run();
                         try {
-                            sendWriter.println(userID +">"+ sendmsg);
+                            sendWriter.println(userID +">"+ sendmsg+"  ");
                             sendWriter.flush();
                             message.setText("");
                         } catch (Exception e) {

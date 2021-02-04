@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class Room_informationRequest extends StringRequest {
     // 서버 URL 설정(서버랑 연결)
-    final static private String URL = "http://165.229.187.90/room_information.php"; // 심어놓은 php 파일 연동
+    final static private String URL = "http://180.189.90.25:8000/room_information.php"; // 심어놓은 php 파일 연동
     private Map<String, String> map;
 
 
